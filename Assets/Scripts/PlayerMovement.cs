@@ -47,14 +47,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        Vector3 lookDirection = mousePos - transform.position;
+        lookDirection.y = 0; // Ignore vertical component
+
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+        if (angle > 90 || angle < -90)
         {
-            Vector3 localScale = transform.localScale;
-            isFacingRight = !isFacingRight;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            if (isFacingRight)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingRight = false;
+            }
+        }
+        else
+        {
+            if (!isFacingRight)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingRight = true;
+            }
         }
     }
+
 
     private IEnumerator Dash()
     {

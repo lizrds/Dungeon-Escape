@@ -3,52 +3,70 @@ using TMPro;
 
 public class WeaponPick : MonoBehaviour
 {
-    
     public bool canGrab;
     public Transform hand;
-    public GameObject weapon; // Reference to the weapon object
+    public GameObject weapon;
     public TMP_Text grabText;
+    public bool gunInHand;
 
     void Start()
     {
         canGrab = false;
-        grabText.gameObject.SetActive(false); // Deactivate the text initially
+        gunInHand = false;
+        grabText.gameObject.SetActive(false);
     }
-
 
     void Update()
     {
-        if (canGrab && Input.GetKeyDown(KeyCode.F)) // Check if canGrab is true and "F" is pressed
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Equip();
+            if (weapon != null && weapon.transform.parent == hand)
+            {
+                Drop();
+            }
+            if (weapon != null && canGrab)
+            {
+                Equip();
+            }
         }
     }
 
     private void Equip()
     {
+        gunInHand = true;
         weapon.transform.position = hand.position;
         weapon.transform.rotation = hand.rotation;
         weapon.transform.parent = hand;
-        grabText.gameObject.SetActive(false); // Deactivate the grab text after picking up
+        grabText.gameObject.SetActive(false);
+        //weapon.GetComponent<CircleCollider2D>().enabled = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other) // Use Collider2D instead of Collision for 2D triggers
+    private void Drop()
     {
-        if (other.CompareTag("Weapon")) // Check if the collider belongs to a weapon
+        if (weapon == null) return;
+
+        gunInHand = false;
+        weapon.transform.parent = null;
+        weapon = null;
+        //weapon.GetComponent<CircleCollider2D>().enabled = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.CompareTag("Weapon"))
         {
             canGrab = true;
-            grabText.gameObject.SetActive(true); // Activate the grab text
-            weapon = other.gameObject; // Assign the weapon object
+            grabText.gameObject.SetActive(true);
+            weapon = other.gameObject; 
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Weapon")) // Check if the collider belongs to a weapon
+        if (other.CompareTag("Weapon"))
         {
             canGrab = false;
-            grabText.gameObject.SetActive(false); // Deactivate the grab text
-            weapon = null; // Reset the weapon object
+            grabText.gameObject.SetActive(false);
         }
     }
 }
