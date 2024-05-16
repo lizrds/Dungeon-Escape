@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: cdbe649cde613964abad27a2050d12fe
+  productGUID: 006582173ca19694183f891bdf369ccb
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Dungeon-Escape
+  productName: DungenEscapinnn
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -629,14 +629,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Dungeon-Escape
+  metroPackageName: DungenEscapinnn
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Dungeon-Escape
+  metroApplicationDescription: DungenEscapinnn
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -705,10 +705,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 1f18ea40-8d04-4056-9aad-a6b8f0cbaa00
+  cloudProjectId: ba6fdb03-76b6-4b66-bdbd-9cb751c7b011
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Dungeon-Escape
+  projectName: DungenEscapinnn
   organizationId: arke1
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
