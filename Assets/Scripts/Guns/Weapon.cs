@@ -13,7 +13,10 @@ public class Weapon : MonoBehaviour
     public GameObject boomerVisual;
     private bool isShooting;
     private bool canShoot = true;
+    public bool isBoomer;
     public GameObject shootParticles;
+
+
 
 
 
@@ -32,10 +35,10 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        if (!isShotgun)
+        if (isBoomer && !isShotgun)
         {
             canShoot = false;
-            Instantiate(shootParticles, transform.position, Quaternion.identity);
+
             GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Bullet bullet = newBullet.GetComponent<Bullet>();
 
@@ -55,7 +58,30 @@ public class Weapon : MonoBehaviour
             boomerVisual.SetActive(true);
             canShoot = true; //shooting cooldown :)))))
         }
-        else
+        if (!isBoomer && !isShotgun)
+        {
+            canShoot = false;
+
+            GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+            Bullet bullet = newBullet.GetComponent<Bullet>();
+
+            if (bullet != null)
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePos.z = 0;
+
+                Vector3 shootDirection = (mousePos - shootPoint.position).normalized;
+                bullet.Initialize(shootDirection, bulletSpeed);
+            }
+
+            StartCoroutine(BulletGone(newBullet));
+
+            
+            yield return new WaitForSeconds(shootDelay);
+            
+            canShoot = true; //shooting cooldown :)))))
+        }
+        if (isShotgun)
         {
             canShoot = false;
 

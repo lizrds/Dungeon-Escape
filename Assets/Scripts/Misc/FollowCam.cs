@@ -7,21 +7,16 @@ public class FollowCam : MonoBehaviour
     private Transform target;
     public Vector3 offset;
     [Range(0.01f, 0.99f)] public float smoothness;
-    [Space]
-    public float zoomSpeed = 2f;
-    public float minZoom = 2f;
-    public float maxZoom = 10f;
-    Camera cam;
-    float targetOrthographicSize;
 
     void Start()
     {
-        cam = GetComponent<Camera>();
-        targetOrthographicSize = cam.orthographicSize;
+        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         
         if (player != null)
         {
+            
             target = player.transform;
         }
         else
@@ -30,22 +25,9 @@ public class FollowCam : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Z))
-        {
-            targetOrthographicSize = Mathf.Min(targetOrthographicSize + zoomSpeed * Time.deltaTime, maxZoom);
-        }
-        else
-        {
-            targetOrthographicSize = Mathf.Max(targetOrthographicSize - zoomSpeed * Time.deltaTime, minZoom);
-        }
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetOrthographicSize, Time.deltaTime * zoomSpeed);
-        
-    }
     void LateUpdate()
     {
-
+        
         if (target != null)
         {
             
