@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8483675605298613543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.11, y: 3.26, z: -0.05950451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   pick: {fileID: 0}
   shootDelay: 1
   isShotgun: 0
+  shootParticles: {fileID: 7723627238690429490, guid: 2cc18fc8a27c39940b820df44fdadd0d, type: 3}
 --- !u!50 &6052824981774532574
 Rigidbody2D:
   serializedVersion: 4

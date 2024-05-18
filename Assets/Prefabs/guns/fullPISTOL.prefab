@@ -116,6 +116,7 @@ MonoBehaviour:
   pick: {fileID: 0}
   shootDelay: 0.5
   isShotgun: 0
+  shootParticles: {fileID: 201250119082514193, guid: 83fda2fff914e9e4d903a28f9590d9f5, type: 3}
 --- !u!1 &8182300047033534569
 GameObject:
   m_ObjectHideFlags: 0

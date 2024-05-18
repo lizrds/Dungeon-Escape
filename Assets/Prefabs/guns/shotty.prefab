@@ -200,3 +200,4 @@ MonoBehaviour:
   pick: {fileID: 0}
   shootDelay: 2
   isShotgun: 1
+  shootParticles: {fileID: 201250119082514193, guid: 83fda2fff914e9e4d903a28f9590d9f5, type: 3}

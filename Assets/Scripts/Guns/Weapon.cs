@@ -10,11 +10,16 @@ public class Weapon : MonoBehaviour
     public WeaponPick pick;
     public float shootDelay = 0.5f; 
     public bool isShotgun;
+<<<<<<< HEAD
     public GameObject boomerVisual;
     private bool isShooting;
 
     private bool canShoot = true;
 
+=======
+    [Space]
+    public GameObject shootParticles;
+>>>>>>> 65765ff05ea40886e4fc11a8275aa6aa4eead007
 
 
     void Update()
@@ -35,7 +40,7 @@ public class Weapon : MonoBehaviour
         if (!isShotgun)
         {
             canShoot = false;
-
+            Instantiate(shootParticles, transform.position, Quaternion.identity);
             GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Bullet bullet = newBullet.GetComponent<Bullet>();
 
