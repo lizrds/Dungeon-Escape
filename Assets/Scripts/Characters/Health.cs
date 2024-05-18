@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
     public Transform healthBar;
 
     private void Start()
@@ -11,12 +11,14 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= 10;
-        if (currentHealth <= 0)
+        currentHealth -= damage;
+
+        if (currentHealth <= 0f)
         {
-            currentHealth = 0;
+            currentHealth = 0f;
+            print(currentHealth);
             Debug.Log("Health depleted!");
             Destroy(gameObject);
         }

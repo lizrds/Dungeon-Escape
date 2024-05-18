@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2812631865934853840}
   - component: {fileID: -8585964579676870598}
   - component: {fileID: 7193860888515320595}
-  - component: {fileID: 1034327830381960394}
+  - component: {fileID: -7835751062912709488}
   m_Layer: 0
   m_Name: boomShot
   m_TagString: bullet
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809e115d1efedc74b923fa68db720c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
 --- !u!114 &7193860888515320595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,8 +141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 700
---- !u!70 &1034327830381960394
-CapsuleCollider2D:
+  isReturning: 0
+  speed: 10
+  player: {fileID: 0}
+--- !u!58 &-7835751062912709488
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,9 +173,9 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.20206946, y: 0.0097558405}
-  m_Size: {x: 0.595862, y: 1.0195119}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999994

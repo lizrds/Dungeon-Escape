@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Transform weaponPivot; // This should be a parent of the weapon
-    public Transform shootPoint;  // This should be a child of the weapon
+    public Transform weaponPivot;
+    public Transform shootPoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
     public WeaponPick pick;
-    public float shootDelay = 0.5f; // Adjust this value as needed
+    public float shootDelay = 0.5f; 
     public bool isShotgun;
+    public GameObject boomerVisual;
+    private bool isShooting;
 
-    private bool canShoot = true; // Flag to control shooting
+    private bool canShoot = true;
+
+
 
     void Update()
     {
@@ -46,15 +50,16 @@ public class Weapon : MonoBehaviour
 
             StartCoroutine(BulletGone(newBullet));
 
+            boomerVisual.SetActive(false);
             yield return new WaitForSeconds(shootDelay);
-
+            boomerVisual.SetActive(true);
             canShoot = true; //shooting cooldown :)))))
         }
         else
         {
             canShoot = false;
 
-            // Number of bullets to shoot
+            
             int numBullets = 5;
 
             for (int i = 0; i < numBullets; i++)
@@ -83,8 +88,7 @@ public class Weapon : MonoBehaviour
             yield return new WaitForSeconds(shootDelay);
 
             canShoot = true; //shoot cooldown :DD
-        }
-        
+        } 
     }
 
     void Aim()
@@ -93,7 +97,7 @@ public class Weapon : MonoBehaviour
         Vector3 mouseDirection = mousePosition - weaponPivot.position;
         float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
 
-        // Check if the mouse is to the left of the weapon pivot
+        
         if (mouseDirection.x < 0)
         {
             weaponPivot.localScale = new Vector3(-1, 1, 1);
