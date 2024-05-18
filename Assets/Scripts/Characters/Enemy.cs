@@ -8,10 +8,13 @@ public class Enemy : MonoBehaviour
     public float speed = 5f;
     public float attackCD;
     float startAttackCD;
+    public Health hp;
+
     private void Start()
     {
         startAttackCD = attackCD;
     }
+
     private void Update()
     {
         attackCD -= Time.deltaTime;
@@ -22,13 +25,21 @@ public class Enemy : MonoBehaviour
             transform.Translate(direction * speed * Time.deltaTime);
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && attackCD <= 0)
         {
             attackCD = startAttackCD;
             collision.gameObject.GetComponent<Health>().TakeDamage(20);
         }
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("bullet"))
+        {
+            hp.TakeDamage(20);
+        }
     }
 }

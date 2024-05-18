@@ -10,10 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5075172086142184633}
   - component: {fileID: 4528652242732868622}
-  - component: {fileID: 4328893414900251903}
+  - component: {fileID: 2812631865934853840}
+  - component: {fileID: -8585964579676870598}
+  - component: {fileID: 7193860888515320595}
+  - component: {fileID: 1034327830381960394}
   m_Layer: 0
-  m_Name: boomerang
-  m_TagString: Weapon
+  m_Name: boomShot
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +88,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4328893414900251903
-CircleCollider2D:
+--- !u!50 &2812631865934853840
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256070289203109049}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-8585964579676870598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256070289203109049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809e115d1efedc74b923fa68db720c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+--- !u!114 &7193860888515320595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256070289203109049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973aac9a944ab21488234eedb8d9ab13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 700
+--- !u!70 &1034327830381960394
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,6 +173,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23801725, y: 0.07531077}
-  serializedVersion: 2
-  m_Radius: 2.4039302
+  m_Offset: {x: 0.20206946, y: 0.0097558405}
+  m_Size: {x: 0.595862, y: 1.0195119}
+  m_Direction: 0

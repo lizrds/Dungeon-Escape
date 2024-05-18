@@ -17,9 +17,5 @@ public class Bullet : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y) * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Handle collision logic here
-        //Destroy(gameObject);
-    }
+    
 }
