@@ -8,10 +8,11 @@ public class WeaponPick : MonoBehaviour
     public GameObject weapon;
     public TMP_Text grabText;
     public bool gunInHand;
+    private Weapon gun;
 
     void Start()
     {
-        canGrab = false;
+        canGrab = true;
         gunInHand = false;
         grabText.gameObject.SetActive(false);
     }
@@ -24,7 +25,7 @@ public class WeaponPick : MonoBehaviour
             {
                 Drop();
             }
-            if (weapon != null && canGrab)
+            else if (weapon != null && canGrab)
             {
                 Equip();
             }
@@ -33,12 +34,19 @@ public class WeaponPick : MonoBehaviour
 
     private void Equip()
     {
-        gunInHand = true;
-        weapon.transform.position = hand.position;
-        weapon.transform.rotation = hand.rotation;
-        weapon.transform.parent = hand;
-        grabText.gameObject.SetActive(false);
-        //weapon.GetComponent<CircleCollider2D>().enabled = false;
+        if (!gunInHand)
+        {
+            gunInHand = true;
+            weapon.transform.position = hand.position;
+            weapon.transform.rotation = hand.rotation;
+            weapon.transform.parent = hand;
+
+            gun = weapon.GetComponent<Weapon>();
+            gun.pick = this;
+
+            grabText.gameObject.SetActive(false);
+            canGrab = false;
+        }
     }
 
     private void Drop()
@@ -48,16 +56,19 @@ public class WeaponPick : MonoBehaviour
         gunInHand = false;
         weapon.transform.parent = null;
         weapon = null;
-        //weapon.GetComponent<CircleCollider2D>().enabled = true;
+        gun = null;
+        canGrab = true;
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Weapon"))
         {
-            canGrab = true;
             grabText.gameObject.SetActive(true);
-            weapon = other.gameObject; 
+            if (weapon == null)
+            {
+                weapon = other.gameObject;
+            } 
         }
     }
 
@@ -65,8 +76,12 @@ public class WeaponPick : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            canGrab = false;
             grabText.gameObject.SetActive(false);
+
+            if (!gunInHand)
+            {
+                weapon = null;
+            }
         }
     }
 }

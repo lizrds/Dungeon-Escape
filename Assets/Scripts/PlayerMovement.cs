@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         mousePos.z = 0;
 
         Vector3 lookDirection = mousePos - transform.position;
-        lookDirection.y = 0; // Ignore vertical component
+        lookDirection.y = 0;
 
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
