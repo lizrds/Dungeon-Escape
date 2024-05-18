@@ -39,6 +39,7 @@ public class Weapon : MonoBehaviour
         {
             canShoot = false;
 
+            
             GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Bullet bullet = newBullet.GetComponent<Bullet>();
 
@@ -61,7 +62,7 @@ public class Weapon : MonoBehaviour
         if (!isBoomer && !isShotgun)
         {
             canShoot = false;
-
+            Instantiate(shootParticles, shootPoint.position, shootPoint.rotation);
             GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Bullet bullet = newBullet.GetComponent<Bullet>();
 
@@ -93,7 +94,7 @@ public class Weapon : MonoBehaviour
                 
                 float angleOffset = Random.Range(-5f, 5f);
 
-                
+                Instantiate(shootParticles, shootPoint.position, shootPoint.rotation);
                 GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
                 Bullet bullet = newBullet.GetComponent<Bullet>();
 
