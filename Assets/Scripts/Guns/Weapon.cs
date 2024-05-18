@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
     public WeaponPick pick;
     public float shootDelay = 0.5f; // Adjust this value as needed
     public bool isShotgun;
+    [Space]
+    public GameObject shootParticles;
 
     private bool canShoot = true; // Flag to control shooting
 
@@ -31,7 +33,7 @@ public class Weapon : MonoBehaviour
         if (!isShotgun)
         {
             canShoot = false;
-
+            Instantiate(shootParticles, transform.position, Quaternion.identity);
             GameObject newBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             Bullet bullet = newBullet.GetComponent<Bullet>();
 
