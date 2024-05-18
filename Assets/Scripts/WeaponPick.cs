@@ -53,6 +53,7 @@ public class WeaponPick : MonoBehaviour
     {
         if (weapon == null) return;
 
+        gun.weaponPivot.localScale = new Vector3(1, 1, 1);
         gunInHand = false;
         weapon.transform.parent = null;
         weapon = null;
@@ -62,6 +63,7 @@ public class WeaponPick : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (weapon != null) return;
         if (other.CompareTag("Weapon"))
         {
             grabText.gameObject.SetActive(true);

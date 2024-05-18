@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (pick.gunInHand)
+        if (pick.gunInHand && this.transform.parent != null)
         {
             Aim();
 
@@ -49,8 +49,20 @@ public class Weapon : MonoBehaviour
 
     void Aim()
     {
-        Vector3 mouseOffset = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - weaponPivot.position).normalized;
-        float angle = Mathf.Atan2(mouseOffset.y, mouseOffset.x) * Mathf.Rad2Deg;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseDirection = mousePosition - weaponPivot.position;
+        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+
+        // Check if the mouse is to the left of the weapon pivot
+        if (mouseDirection.x < 0)
+        {
+            weaponPivot.localScale = new Vector3(-1, 1, 1);
+            angle += 180f; 
+        }
+        else
+        {   
+            weaponPivot.localScale = new Vector3(1, 1, 1);
+        }
         weaponPivot.eulerAngles = new Vector3(0, 0, angle);
     }
 
